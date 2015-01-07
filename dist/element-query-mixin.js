@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("react"));
+		module.exports = factory();
 	else if(typeof define === 'function' && define.amd)
-		define(["react"], factory);
+		define(factory);
 	else {
-		var a = typeof exports === 'object' ? factory(require("react")) : factory(root["React"]);
+		var a = factory();
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
-})(this, function(__WEBPACK_EXTERNAL_MODULE_3__) {
+})(this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -54,8 +54,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports.BreakpointsMixin = __webpack_require__(1);
-	module.exports.ResizeSensor = __webpack_require__(2);
+	module.exports = __webpack_require__(1);
 
 
 /***/ },
@@ -70,6 +69,52 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return element.offsetHeight;
 	  }
 	};
+
+
+	var addEventListener = function (element, name, handler) {
+	  if (element.addEventListener) {
+	    element.addEventListener(name, handler);
+	  } else {
+	    element.attachEvent('on' + name, handler);
+	  }
+	};
+
+
+	var removeEventListener = function (element, name, handler) {
+	  if (element.removeEventListener) {
+	    element.removeEventListener(name, handler);
+	  } else {
+	    element.detachEvent('on' + name, handler);
+	  }
+	};
+
+
+	var throttle = (function() {
+	  var throttle = null;
+
+	  if (window.requestAnimationFrame) {
+	    throttle = window.requestAnimationFrame;
+	  }
+
+	  var vendors = ['webkit', 'moz'];
+	  for (var x = 0; x < vendors.length && !throttle; ++x) {
+	    throttle = window[vendors[x]+'RequestAnimationFrame'];
+	  }
+
+	  if (!throttle) {
+	    var lastTime = 0;
+	    throttle = function(callback, element) {
+	      var currTime = new Date().getTime();
+	      var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+	      var id = window.setTimeout(function() { callback(currTime + timeToCall); },
+	        timeToCall);
+	      lastTime = currTime + timeToCall;
+	      return id;
+	    };
+	  }
+
+	  return throttle;
+	})();
 
 
 	var BreakpointsMixin = {
@@ -88,10 +133,47 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  componentDidMount: function () {
 	    this.breakpointsEvaluate();
+	    this.setupResizeSensor();
+	  },
+
+	  componentWillUnmount: function () {
+	    this.teardownResizeSensor();
+	  },
+
+	  setupResizeSensor: function () {
+	    var sensor = document.createElement('iframe');
+
+	    // add essential styles
+	    sensor.style.position = 'absolute';
+	    sensor.style.left = '0px';
+	    sensor.style.top = '0px';
+	    sensor.style.right = '0px';
+	    sensor.style.bottom = '0px';
+	    sensor.style.width = '100%';
+	    sensor.style.height = '100%';
+	    sensor.style.zIndex = '-1';
+	    sensor.style.visibility = 'hidden';
+	    sensor.style.border = '0 none';
+
+	    // add class name for easy identification
+	    sensor.className = 'element-resize-sensor';
+
+	    // append
+	    this.getDOMNode().appendChild(sensor);
+
+	    // add event listener
+	    addEventListener(sensor.contentWindow, 'resize', this.breakpointsHandleResize);
+
+	    // save it for later
+	    this.breakpointsSensor = sensor;
+	  },
+
+	  teardownResizeSensor: function () {
+	    removeEventListener(this.breakpointsSensor.contentWindow, 'resize', this.breakpointsHandleResize);
 	  },
 
 	  breakpointsHandleResize: function () {
-	    this.breakpointsEvaluate();
+	    throttle(this.breakpointsEvaluate);
 	  },
 
 	  breakpointsEvaluate: function () {
@@ -124,68 +206,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	module.exports = BreakpointsMixin;
 
-
-/***/ },
-/* 2 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var React = __webpack_require__(3);
-
-
-	var ResizeSensor = React.createClass({displayName: "ResizeSensor",
-
-	  propTypes: {
-	    onResize: React.PropTypes.func.isRequired
-	  },
-
-	  getDefaultProps: function () {
-	    return {
-	      onResize: null
-	    };
-	  },
-
-	  render: function () {
-	    return (
-	      React.createElement("iframe", {className: "element-resize-sensor", style: this.getStyles()})
-	    );
-	  },
-
-	  getStyles: function () {
-	    return {
-	      position: 'absolute',
-	      left: '0px',
-	      top: '0px',
-	      right: '0px',
-	      bottom: '0px',
-	      width: '100%',
-	      height: '100%',
-	      zIndex: '-1',
-	      visibility: 'hidden',
-	      border: '0 none'
-	    }
-	  },
-
-	  componentDidMount: function () {
-	    this.getDOMNode().contentWindow.addEventListener('resize', this.handleResize);
-	  },
-
-	  componentWillUnmount: function () {
-	    this.getDOMNode().contentWindow.removeEventListener('resize', this.handleResize);
-	  },
-
-	  handleResize: function () {
-	    this.props.onResize();
-	  }
-	});
-
-	module.exports = ResizeSensor;
-
-
-/***/ },
-/* 3 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __WEBPACK_EXTERNAL_MODULE_3__;
 
 /***/ }
 /******/ ])

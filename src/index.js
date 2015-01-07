@@ -1,2 +1,1 @@
-module.exports.BreakpointsMixin = require('./mixins/BreakpointsMixin');
-module.exports.ResizeSensor = require('./components/ResizeSensor');
+module.exports = require('./mixins/BreakpointsMixin');
