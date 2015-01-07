@@ -1,7 +1,7 @@
 {
   "name": "react-breakpoints-mixin",
   "version": "0.0.1",
-  "description": "Mixin for component breakpoints.",
+  "description": "BreakpointsMixin for your React Components.",
   "main": "dist/react-breakpoints-mixin.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -1,5 +1,6 @@
 {
   "name": "HelloWorld",
+  "description": "BreakpointsMixin for your React Components.",
   "homepage": "https://github.com/deseretdigital-ui/react-breakpoints-mixin",
   "authors": [
     "Joshua Stoutenburg <jehoshua02@gmail.com>"
