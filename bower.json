@@ -1,0 +1,23 @@
+{
+  "name": "HelloWorld",
+  "homepage": "https://github.com/you/HelloWorld",
+  "authors": [
+    "You <you@helloworld.com"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "gulp",
+    "gulpfile.js",
+    "src"
+  ],
+  "main": "dist/HelloWorld.js",
+  "dependencies": {
+    "react": "~0.12.1",
+    "css-element-queries": "~0.1"
+  }
+}

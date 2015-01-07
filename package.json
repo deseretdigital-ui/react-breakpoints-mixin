@@ -1,0 +1,32 @@
+{
+  "name": "HelloWorld",
+  "version": "0.0.1",
+  "description": "Put yer description here.",
+  "main": "dist/HelloWorld.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/you/HelloWorld.git"
+  },
+  "author": "you <you@helloworld.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/you/HelloWorld/issues"
+  },
+  "homepage": "https://github.com/you/HelloWorld",
+  "devDependencies": {
+    "autoprefixer-loader": "^1.0.0",
+    "css-loader": "^0.9.0",
+    "gulp": "^3.8.10",
+    "gulp-gh-pages": "^0.4.0",
+    "gulp-webpack": "^1.1.0",
+    "jsx-loader": "^0.12.2",
+    "react": "^0.12.1",
+    "require-dir": "^0.1.0",
+    "sass-loader": "^0.3.1",
+    "style-loader": "^0.8.2",
+    "webpack": "^1.4.13"
+  }
+}
