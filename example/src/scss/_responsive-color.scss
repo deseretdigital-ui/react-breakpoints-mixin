@@ -1,0 +1,30 @@
+.responsive-color {
+  position: relative;
+  color: white;
+  background-color: brown;
+  max-width: 100%;
+
+  &--width-small {
+    background-color: red;
+  }
+
+  &--width-medium {
+    background-color: orange;
+  }
+
+  &--width-large {
+    background-color: green;
+  }
+
+  &--height-short {
+    border: 5px solid purple;
+  }
+
+  &--height-medium {
+    border: 5px double yellow;
+  }
+
+  &--height-long {
+    border: 5px dotted hotpink;
+  }
+}

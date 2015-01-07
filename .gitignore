@@ -1,6 +1,4 @@
 node_modules
 bower_components
-example/*
-!example/index.html
-!example/index.css
+example/build
 npm-debug.log
