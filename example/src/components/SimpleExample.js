@@ -1,6 +1,5 @@
 var React = require('react/addons');
 var ResponsiveColors = require('./ResponsiveColors');
-require('./SimpleExample.scss');
 
 
 var SimpleExample = React.createClass({

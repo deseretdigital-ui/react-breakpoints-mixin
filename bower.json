@@ -1,8 +1,8 @@
 {
   "name": "HelloWorld",
-  "homepage": "https://github.com/you/HelloWorld",
+  "homepage": "https://github.com/deseretdigital-ui/react-breakpoints-mixin",
   "authors": [
-    "You <you@helloworld.com"
+    "Joshua Stoutenburg <jehoshua02@gmail.com>"
   ],
   "license": "MIT",
   "ignore": [
@@ -15,9 +15,8 @@
     "gulpfile.js",
     "src"
   ],
-  "main": "dist/HelloWorld.js",
+  "main": "dist/react-breakpoints-mixin.js",
   "dependencies": {
-    "react": "~0.12.1",
-    "css-element-queries": "~0.1"
+    "react": "~0.12.1"
   }
 }

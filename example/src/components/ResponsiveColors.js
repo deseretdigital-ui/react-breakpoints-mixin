@@ -1,5 +1,6 @@
 var React = require('react/addons');
 var BreakpointsMixin = require('../../../src');
+require('./ResponsiveColors.scss');
 
 
 var ResonsiveColors = React.createClass({

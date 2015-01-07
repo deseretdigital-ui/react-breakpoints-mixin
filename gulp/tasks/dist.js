@@ -7,7 +7,7 @@ var config = {
   dest: './dist',
   webpack: {
     output: {
-      filename: 'element-query-mixin.js',
+      filename: 'react-breakpoints-mixin.js',
       libraryTarget: 'umd'
     },
     module: {
@@ -41,9 +41,9 @@ var config = {
       extensions: ['', '.js', '.jsx'],
       modulesDirectories: ['bower_components', 'node_modules'],
     },
-    // plugins: [
-    //   new webpack.optimize.UglifyJsPlugin()
-    // ]
+    plugins: [
+      new webpack.optimize.UglifyJsPlugin()
+    ]
   }
 };
 
