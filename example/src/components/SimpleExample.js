@@ -21,7 +21,7 @@ var SimpleExample = React.createClass({
   render: function () {
     var things = [];
 
-    var limit = 500;
+    var limit = 1000;
     for (var i = 0; i <= limit; i++) {
       things.push(
         <ResponsiveColors width={this.getWidth()} height={this.getHeight()} key={'thing-' + i} />

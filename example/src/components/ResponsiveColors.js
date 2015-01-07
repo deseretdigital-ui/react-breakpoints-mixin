@@ -28,17 +28,7 @@ var ResonsiveColors = React.createClass({
   },
 
   getClasses: function () {
-    var classes = {
-      'responsive-color': true,
-      'responsive-color--width-small': this.breakpointMatched('width', 'small'),
-      'responsive-color--width-medium': this.breakpointMatched('width', 'medium'),
-      'responsive-color--width-large': this.breakpointMatched('width', 'large'),
-      'responsive-color--height-short': this.breakpointMatched('height', 'short'),
-      'responsive-color--height-medium': this.breakpointMatched('height', 'medium'),
-      'responsive-color--height-long': this.breakpointMatched('height', 'long')
-    };
-
-    return React.addons.classSet(classes);
+    return React.addons.classSet(this.breakpointsClasses('responsive-colors'));
   },
 
   getStyles: function () {
