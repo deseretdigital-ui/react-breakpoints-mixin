@@ -34,9 +34,9 @@ var ResonsiveColors = React.createClass({
 
   render: function () {
     return (
-      <h1 className={this.getClasses()} style={this.getStyles()}>
-        Simple Example
-      </h1>
+      <div className={this.getClasses()} style={this.getStyles()}>
+        Click button or resize window.
+      </div>
     );
   },
 
