@@ -7,6 +7,18 @@ var ResonsiveColors = React.createClass({
 
   mixins: [BreakpointsMixin],
 
+  propTypes: {
+    width: React.PropTypes.string,
+    height: React.PropTypes.string
+  },
+
+  getDefaultProps: function () {
+    return {
+      width: null,
+      height: null
+    };
+  },
+
   breakpoints: {
     width: {
       "small": [0, 400],
@@ -25,6 +37,19 @@ var ResonsiveColors = React.createClass({
       <h1 className={this.getClasses()} style={this.getStyles()}>
         Simple Example
       </h1>
+    );
+  },
+
+  componentDidUpdate: function (prevProps, prevState) {
+    if (this.shouldEvaluateBreakpoints(prevProps)) {
+      this.breakpointsEvaluate();
+    }
+  },
+
+  shouldEvaluateBreakpoints: function (prevProps) {
+    return (
+      this.props.width !== prevProps.width
+      || this.props.height !== prevProps.height
     );
   },
 

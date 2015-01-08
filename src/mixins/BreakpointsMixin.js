@@ -83,7 +83,10 @@ var BreakpointsMixin = {
       }
     }
 
-    this.setState({ breakpointsMatched: matched });
+    var changed = JSON.stringify(matched) !== JSON.stringify(this.state.breakpointsMatched);
+    if (changed) {
+      this.setState({ breakpointsMatched: matched });
+    }
   },
 
   breakpointMatched: function (property, name) {
