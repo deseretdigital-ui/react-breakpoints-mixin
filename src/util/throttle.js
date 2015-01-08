@@ -12,7 +12,7 @@ var throttle = (function() {
 
   if (!throttle) {
     var lastTime = 0;
-    throttle = function(callback, element) {
+    throttle = function(callback) {
       var currTime = new Date().getTime();
       var timeToCall = Math.max(0, 16 - (currTime - lastTime));
       var id = window.setTimeout(function() { callback(currTime + timeToCall); },

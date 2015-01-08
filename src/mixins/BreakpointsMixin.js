@@ -1,4 +1,3 @@
-var {addEventListener, removeEventListener} = require('../util/event');
 var windowResizeEvent = require('../util/windowResizeEvent');
 var elementValue = require('../util/elementValue');
 

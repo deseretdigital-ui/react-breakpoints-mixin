@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var gulpWebpack = require('gulp-webpack');
+var webpack = require('webpack');
 
 
 var config = {
