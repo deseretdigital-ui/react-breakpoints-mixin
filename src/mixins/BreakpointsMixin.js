@@ -1,5 +1,7 @@
 var windowResizeEvent = require('../util/windowResizeEvent');
 var elementValue = require('../util/elementValue');
+var warn = require('../util/warn');
+var range = require('../util/range');
 
 
 var BreakpointsMixin = {
@@ -17,12 +19,45 @@ var BreakpointsMixin = {
   },
 
   componentDidMount: function () {
+    this.breakpointsWarnOverlapping();
     this.breakpointsEvaluate();
     this.breakpointsSetup();
   },
 
   componentWillUnmount: function () {
     this.breakpointsTeardown();
+  },
+
+  breakpointsWarnOverlapping: function () {
+    for (var property in this.breakpoints) {
+
+      // collect all breakpoints in list for permutation comparisons
+      var list = [];
+      for (var name in this.breakpoints[property]) {
+        list.push({
+          name: name,
+          range: this.breakpoints[property][name]
+        });
+      }
+
+      // now check overlap for each permutation
+      while (list.length > 0) {
+        var a = list.shift();
+        var limit = list.length;
+        for (var i = 0; i < limit; i++) {
+          var b = list[i];
+          if (range(a.range).overlaps(b.range, true, false)) {
+            warn(
+              'BreakpointsMixin: overlapping '
+              + property + ' breakpoints '
+              + a.name + ' (' + a.range.join(', ') + ') and '
+              + b.name + ' (' + b.range.join(', ') + ').'
+            );
+          }
+        }
+      }
+
+    }
   },
 
   breakpointsSetup: function () {
@@ -42,10 +77,7 @@ var BreakpointsMixin = {
       var value = elementValue(this.getDOMNode(), property);
 
       for (var name in breakpoints) {
-        var breakpoint = breakpoints[name];
-        var min = breakpoint[0];
-        var max = breakpoint[1];
-        if (min <= value && value < max) {
+        if (range(breakpoints[name]).contains(value)) {
           matched[property].push(name);
         }
       }
