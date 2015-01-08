@@ -1,5 +1,5 @@
 var React = require('react/addons');
-var BreakpointsMixin = require('../../../src');
+var BreakpointsMixin = require('../../../src').BreakpointsMixin;
 require('./ResponsiveColors.scss');
 
 

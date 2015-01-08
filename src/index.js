@@ -1,1 +1,1 @@
-module.exports = require('./mixins/BreakpointsMixin');
+module.exports.BreakpointsMixin = require('./mixins/BreakpointsMixin');
