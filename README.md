@@ -61,7 +61,7 @@ Once you have imported the `BreakpointsMixin` variable, you need to ...
 
 1. Add it to your fancy component's list of mixins.
 2. Define breakpoints for width and/or height.
-3. For typical use cases, generate css classes using the provided method.
+3. Generate css classes using the provided `this.breakpointsClasses()` method.
 
 ```javascript
 var FancyComponent = React.createClass({
@@ -93,12 +93,12 @@ var FancyComponent = React.createClass({
 ```
 
 ---
-__NOTE__: To use `React.addons.classSet` you will need to include [React with
+__NOTE__: To use `React.addons.classSet` you will need to include [react with
 addons](http://facebook.github.io/react/docs/addons.html).
 ___
 
 
-### defining breakpoints
+### Defining Breakpoints
 
 Breakpoints are defined by adding a `breakpoints` property to your component.
 
@@ -107,7 +107,7 @@ the breakpoints are evaluated against. Both `width` and `height` are supported.
 
 Under each property is another object, whose keys are the user-defined names for
 the breakpoints and the value is the breakpoint range, an array with two integer
-values representing the max and the min of the breakpoint.
+values representing the min and max of the breakpoint.
 
 To avoid having to subtract one pixel between breakpoints, the max is not
 included in range comparisons during breakpoint evaluation. The comparison to
@@ -123,7 +123,7 @@ warning will be output to the console if overlapping breakpoints are detected.
 ___
 
 
-## reference
+## Reference
 
 ### `BreakpointsMixin`
 
