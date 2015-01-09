@@ -81,7 +81,7 @@ var FancyComponent = React.createClass({
   },
 
   render: function () {
-    <div class="this.getClasses()">Hello World</div>
+    <div className={this.getClasses()}>Hello World</div>
   },
 
   getClasses: function () {
@@ -102,7 +102,7 @@ ___
 Breakpoints are defined by adding a `breakpoints` property to your component.
 
 The `breakpoints` property is an object whose keys are element properties that
-the breakpoints are evaluated against. Both `width` and `height` are supported.
+the breakpoints are evaluated against. Only `width` and `height` are supported.
 
 Under each property is another object, whose keys are the user-defined names for
 the breakpoints and the value is the breakpoint range, an array with two integer

@@ -13,15 +13,7 @@ var config = {
     },
     module: {
       loaders: [
-        { test: /\.jsx?$/, loader: 'jsx-loader?harmony' },
-        {
-          test: /\.scss$/, loaders: [
-            'style-loader',
-            'css-loader',
-            'autoprefixer-loader?{browsers:["last 2 version", "> 1%", "ie 8"]}',
-            'sass-loader'
-          ]
-        }
+        { test: /\.jsx?$/, loader: 'jsx-loader?harmony' }
       ]
     },
     externals: {
