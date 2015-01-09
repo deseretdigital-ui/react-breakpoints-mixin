@@ -42,8 +42,7 @@ or as a [global variable][GoogleGlobalVariable] using a `<script>` tag.
 var BreakpointsMixin = require('react-breakpoints-mixin').BreakpointsMixin;
 ```
 
-The export has a `BreakpointsMixin` property which you can dereference into a
-variable.
+The export has a `BreakpointsMixin` property which you can assign to a variable.
 
 
 ### Global Variable
@@ -132,7 +131,7 @@ Type: Object
 The main module, a mixin for use with React.
 
 
-### `Breakpoints.breakpointsClasses( className )`
+### `this.breakpointsClasses( className )`
 
 Type: Method
 
@@ -190,7 +189,7 @@ something like:
 ```
 
 
-### `BreakpointsMixin.breakpointMatched( property, name )`
+### `this.breakpointMatched( property, name )`
 
 Type: Method
 
@@ -215,7 +214,7 @@ the method like so:
 ```
 
 
-### `BreakpointsMixin.breakpointsEvaluate()`
+### `this.breakpointsEvaluate()`
 
 Type: Method
 
