@@ -62,7 +62,7 @@ Once you have imported the `BreakpointsMixin` variable, you need to ...
 2. Define breakpoints for width and/or height.
 3. Generate css classes using the provided `this.breakpointsClasses()` method.
 
-```javascript
+```jsx
 var FancyComponent = React.createClass({
 
   mixins: [ BreakpointsMixin ], /* [1] */
