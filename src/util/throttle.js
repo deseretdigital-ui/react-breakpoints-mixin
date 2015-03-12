@@ -1,4 +1,8 @@
 var throttle = (function() {
+  if (typeof window === "undefined") {
+    return;
+  }
+
   var throttle = null;
 
   if (window.requestAnimationFrame) {

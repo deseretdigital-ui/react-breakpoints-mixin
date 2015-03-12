@@ -3,7 +3,10 @@ var throttle = require('./throttle');
 
 
 var windowResizeEvent = (function () {
-
+  if (typeof window === "undefined") {
+    return;
+  }
+  
   var handlers = [];
 
 
