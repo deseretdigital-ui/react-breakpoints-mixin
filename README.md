@@ -210,7 +210,7 @@ For example, to check if a breakpoint on `width` named `small` is matched, call
 the method like so:
 
 ```javascript
-  var matched = this.breakpointsMatched('width', 'small');
+  var matched = this.breakpointMatched('width', 'small');
 ```
 
 
